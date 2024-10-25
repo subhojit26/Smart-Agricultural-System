@@ -33,6 +33,38 @@ export class RealtimeRelay {
     // Instantiate new client
     this.log(`Connecting with key "${this.apiKey.slice(0, 3)}..."`);
     const client = new RealtimeClient({ apiKey: this.apiKey });
+    client.addTool(
+      {
+        name: 'get_weather',
+        description:
+          'Retrieves the weather for a given lat, lng coordinate pair. Specify a label for the location.',
+        parameters: {
+          type: 'object',
+          properties: {
+            lat: {
+              type: 'number',
+              description: 'Latitude',
+            },
+            lng: {
+              type: 'number',
+              description: 'Longitude',
+            },
+            location: {
+              type: 'string',
+              description: 'Name of the location',
+            },
+          },
+          required: ['lat', 'lng', 'location'],
+        },
+      },
+      async ({ lat, lng, location }) => {
+        const result = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,wind_speed_10m`
+        );
+        const json = await result.json();
+        return { ...json, origin: 'relay' };
+      }
+    );
 
     // Relay: OpenAI Realtime API Event -> Browser Event
     client.realtime.on('server.*', (event) => {

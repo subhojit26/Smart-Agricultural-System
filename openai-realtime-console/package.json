@@ -15,6 +15,8 @@
     "@types/react-dom": "^18.3.0",
     "dotenv": "^16.4.5",
     "leaflet": "^1.9.4",
+    "markdown-tables-to-json": "^0.1.7",
+    "marked": "^14.1.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-feather": "^2.0.10",
