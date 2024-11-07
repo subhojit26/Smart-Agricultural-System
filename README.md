@@ -1,3 +1,4 @@
+
 \section{Scheme and Subsidy Awareness Module}
 
 \subsection{Introduction}
@@ -110,3 +111,4 @@ On preliminary testing, the Scheme and Subsidy Awareness Module performed well i
 The Multi-lingual AI Chatbot demonstrated impressive capabilities in understanding and responding to user queries in Hindi, Kannada and English. This is tested with general purpose queries and also with queries that require the chatbot to use the tools provided to it at the backend. 
 
 Since it is an independent module for now, it's capabilities are limited to the tools provided to it. However, on integrating it with the rest of the modules, it can provide a comprehensive support system for farmers in multiple languages.
+=======
